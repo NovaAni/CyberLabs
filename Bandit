@@ -1,3 +1,19 @@
 --Level 0--
-Step 1: We start by connecting to the required shell by the command: ssh -p 2220 bandit0@bandit.labs.overthewire.org
-Step 2: Password given is bandit0 which we later enter
+Step 1: We start by connecting to the required shell by the command: ssh bandit0@bandit.labs.overthewire.org -p2220
+Step 2: Password given is bandit0 which we enter and we enter into our first level of the game 
+Step 3: Using ls we find all the sublists present in the current working directory (cwd) 
+Step 4: We see that there is a file called "readme" by which we can access using the cat command: cat readme 
+Step 5: You attain the password to proceed 
+Step 6: Enter the exit command to reconnect to your 1st Level by the ssh bandit1@bandit.labs.overthewire.org -p2220 [This step is repeated after completion of every level]
+[Make sure to make a separate file in your system that stores the passwords as they aren't automatically saved in the game]
+
+--Level 1-- 
+Step 1: We know that the password for the next level is in the - file
+Step 2: We must use ls command to access the lists of files and directories 
+Step 3: We observe the - file present 
+Step 5: We cannot execute: cat - as "-" is a special character 
+Step 6: We have to find the contents inside - file by including the full path of the - file
+Step 7: Command for that would be ./- 
+. -> directory path till that point wrt / 
+/ -> the path introduction to the upcoming file name 
+- > name of the file 
