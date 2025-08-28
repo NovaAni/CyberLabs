@@ -38,3 +38,14 @@ Step 4: ls command [gives us no result] so we must modify this by using the comm
 Step 5: We find a cheeky file named "...Hiding-From-You" hehe
 Step 6: We can access it by the command: cat ./"...Hiding-From-You" and we retrieve the password for Level 4
 
+--Level 4-- 
+Step 1: The password is stored in the human-readable file in the dir named "inhere" 
+Step 2: ls -> inhere directory 
+Step 3: cd inhere
+Step 4: ls command once more 
+Step 5: We spot all the files inside the inhere directory
+Step 6: To filter out the files of different types with the human readable ones we must understand what human readables file refer to
+#Human readable refer to files that consist of ASCII characters 
+Step 7: To filter we must include that condition recursively to all the files in the inhere directory
+Step 8: Command to do that: file ./* | grep ASCII
+#grep 
