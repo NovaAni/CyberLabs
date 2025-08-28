@@ -1,7 +1,7 @@
 --Level 0--
 Step 1: We start by connecting to the required shell by the command: ssh bandit0@bandit.labs.overthewire.org -p2220
 Step 2: Password given is bandit0 which we enter and we enter into our first level of the game 
-Step 3: Using ls we find all the sublists present in the current working directory (cwd) 
+Step 3: Using ls we find all the sublists present in the current working directory (cwd) i.e: ls
 Step 4: We see that there is a file called "readme" by which we can access using the cat command: cat readme 
 Step 5: You attain the password to proceed 
 Step 6: Enter the exit command to reconnect to your 1st Level by the ssh bandit1@bandit.labs.overthewire.org -p2220 [This step is repeated after completion of every level]
@@ -17,3 +17,24 @@ Step 7: Command for that would be ./-
 . -> directory path till that point wrt / 
 / -> the path introduction to the upcoming file name 
 - > name of the file 
+Step 8: We obtain the password for the next level 
+
+--Level 2-- 
+Step 1: We see that the file has spaces in its name which is also treated as a special character 
+Step 2: ls command 
+Step 3: We find a file with the name "--spaces in this filename--"
+Step 4: WKT, "-" and " " are special characters 
+Step 5: We cant access them via the cat --spaces in this filename--
+Step 6: We have to include the full path of the directory similar to Level 1 BUT here as there are consecuite hyphens and spaces this is treated as a separate command
+Step  7: Hence whilst including the filename we enclose it with the "" to access the file
+Step 8: Command: cat ./"--spaces in this filename--" 
+Step 9: We get the pasword and we proceed to Level 3
+
+--Level 3-- 
+Step 1: We see that the password is stored in a HIDDEN FILE with the dir name "inhere" 
+Step 2: ls command
+Step 3: We see the inhere directory, to access it we must make that the current directory by the command: cd inhere
+Step 4: ls command [gives us no result] so we must modify this by using the command: ls -a [-a refers to all files irrespective of type, visibility etc] 
+Step 5: We find a cheeky file named "...Hiding-From-You" hehe
+Step 6: We can access it by the command: cat ./"...Hiding-From-You" and we retrieve the password for Level 4
+
