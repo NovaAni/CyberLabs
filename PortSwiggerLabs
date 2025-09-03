@@ -1,0 +1,9 @@
+Lab: Path Traversal 
+1. Objective:  This lab contains a path traversal vulnerability in the display of product images.
+            To solve the lab, retrieve the contents of the /etc/passwd file. 
+2. Reconnaissance: We use BurpSuite to moderate the traffic generated from opening the lab link either using the built-in chromium browser or via the foxy proxy extension 
+                   We observe that we obtain a list of .jpg requests coming from the website 
+3. Exploitation: We then choose one of the .jpg files and sent the to the Repeater via. Proxy tab. 
+                 After we have sent it to the Repeater tab we change the filename to: ../../../etc/passwd
+                 We click send 
+4. Observation: We notice that we have completed the first lab as we successfully acquired the contents of the /etc/passwd file
