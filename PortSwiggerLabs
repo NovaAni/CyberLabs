@@ -1,4 +1,5 @@
-Lab: Path Traversal 
+Lab: Path Traversal
+
 1. Objective:  This lab contains a path traversal vulnerability in the display of product images.
             To solve the lab, retrieve the contents of the /etc/passwd file. 
 2. Reconnaissance: We use BurpSuite to moderate the traffic generated from opening the lab link either using the built-in chromium browser or via the foxy proxy extension 
@@ -7,3 +8,66 @@ Lab: Path Traversal
                  After we have sent it to the Repeater tab we change the filename to: ../../../etc/passwd
                  We click send 
 4. Observation: We notice that we have completed the first lab as we successfully acquired the contents of the /etc/passwd file
+
+
+
+
+
+Lab: Unprotected admin functionality
+
+1. Objective:  This lab has an unprotected admin panel.
+               Solve the lab by deleting the user carlos. 
+2. Recon: We will be using the website URL for this lab
+3. Exploitation: We learnt that enterring /robots.txt after the given URL will give us access to administrative functions, so we enter /robots.txta after the lab's URL 
+                 This leads us to the client side source code where we find a bypass to disallow the admin controls using a different path i.e. /administrator-panel
+                 This is replaced with /robots.txt  giving us the admin controls, where we remove the user, carlos.
+4. Observation: We used the /robots.txt to lead us to an admin path which we have used to successfully removed carlos 
+
+
+
+
+
+Lab: Unprotected admin functionality with unpredictable URL
+
+1. Objective:  This lab has an unprotected admin panel. It's located at an unpredictable location, but the location is disclosed somewhere in the application.
+               Solve the lab by accessing the admin panel, and using it to delete the user carlos.
+2. Recon: Here we will be using the client side source code for our exploit 
+3. Exploitation: After opening the source code we find a region of code thats enclosed by the curly braces i.e { }
+                 Under "adminPanelTag.setAttribute('href', '/admin-82ca1f');" we see a href (redirect) link with the path /admin-82ca1f
+                 Add this path to the lab URL which redirects us to the admin panel 
+                 We delete carlos
+4. Observation: We used admin permitions using source code and have successfully removed carlos 
+
+
+
+
+
+Lab: User role controlled by request parameter
+
+1. Objective:  This lab has an admin panel at /admin, which identifies administrators using a forgeable cookie.
+               Solve the lab by accessing the admin panel and using it to delete the user carlos.
+               You can log in to your own account using the following credentials: wiener:peter
+2. Recon: BurpSuite should be used here as we can see that the lab requires us to login to our account. 
+          (This usually implies that we should manipulate our enterred data to gain admin controls to delete carlos.)
+3. Exploitation: First we turn on the interpreter via Proxy tab 
+                 We go to "My Account" to login to our account
+                 We enter our given credentials username: wiener & password: peter
+                 Our intercept history would likely be displaying a request with the POST method that indicates a user enterring their data onto the client side system
+                 This is the same data that needs to be manipulated to obtain the admin controls
+                 Search up 'admin' in the search bar in the Intercept region and change Admin=false to Admin=true wherever you find the Admin option
+                 Click Forward on the request until you see no further requests recieved 
+                 After all requests you see an "Admin panel" on the top right of the website, click on it.
+                 Change Admin=true for all requests here too 
+                 Delete carlos (and yes change Admin=true here too)
+4. Observation: We have successfuly controlled the admin role via request parameter and removed carlos
+
+
+
+
+
+Lab: User ID controlled by request parameter, with unpredictable user IDs 
+
+1. Objective:  This lab has a horizontal privilege escalation vulnerability on the user account page, but identifies users with GUIDs.
+               To solve the lab, find the GUID for carlos, then submit his API key as the solution.
+               You can log in to your own account using the following credentials: wiener:peter 
+2. Recon: 
