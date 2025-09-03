@@ -70,4 +70,38 @@ Lab: User ID controlled by request parameter, with unpredictable user IDs
 1. Objective:  This lab has a horizontal privilege escalation vulnerability on the user account page, but identifies users with GUIDs.
                To solve the lab, find the GUID for carlos, then submit his API key as the solution.
                You can log in to your own account using the following credentials: wiener:peter 
-2. Recon: 
+2. Recon: We use BurpSuite to change our user id with carlos' and retrieve his API key
+3. Exploitation: We find a blog written by carlos and open it
+                 We can see carlos' user id at the top of the URL saying "userId=...." 
+                 We copy carlos' user id 
+                 We turn on BurpSuite and login to our account 
+                 We observe on the second request that our user id gets mentioned but here we delete that and paste carlos' user id 
+                 Then forward the request
+                 We get carlos' API key which we submit to complete the level (Submit button is displayed at the top)
+4. Observation: We were able to access carlos' API key just by inputting his user id which was vulnerably displayed in the URL with our login information
+
+
+
+
+
+Lab: User ID controlled by request parameter with password disclosure
+
+1. Objective:  This lab has user account page that contains the current user's existing password, prefilled in a masked input.
+               To solve the lab, retrieve the administrator's password, then use it to delete the user carlos.
+               You can log in to your own account using the following credentials: wiener:peter 
+2. Recon: BurpSuite 
+3. Exploitation: We login to our account as provided 
+                 We see that in the change-password section in the URL we observe our username i.e. wiener being displayed there
+                 Change that to "administrator"
+                 Turn on BurpSuite and enter a placeholder email (dumb email) 
+                 And upload the new password as it is 
+                 In BurpSuite we type "password" in the search column and retrieve the password for administrator
+                 We can turn off BurpSuite now
+                 We login using administrator account and head to Admin panel to delete carlos 
+4. Observation: We deleted carlos' data using administrator access via URL and BurpSuite to attain the administrator's password after we manually update it such that only we have it
+
+
+
+
+
+Lab: 
