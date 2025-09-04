@@ -104,4 +104,21 @@ Lab: User ID controlled by request parameter with password disclosure
 
 
 
-Lab: 
+Lab: Username enumeration via different responses
+
+1. Objective:  This lab is vulnerable to username enumeration and password brute-force attacks. It has an account with a predictable username and password, which can be found in the following wordlists:
+                            ->Candidate usernames
+                            ->Candidate passwords
+               To solve the lab, enumerate a valid username, brute-force this user's password, then access their account page.
+2. Recon: BurpSuite (Intruder Tab) 
+3. Exploitation: Save the given candidate usernames and passwords in two separate files (e.g usernames.txt and passwords.txt respectively) 
+                 On BurpSuite Intercepter and enter a random username and password 
+                 Go to the POST request and send that to the Intruder tab 
+                 Change from Sniper Attack to Cluster Bomb Attack 
+                 Double click on the username you had entered and click "Add §" at the top, on the right side load your usernames.txt payload
+                 Do the same steps for the password but with the passwords.txt payload 
+                 Start the attack (Using BurpSuitePro would be reccomended as it finishes the process much quicker) 
+                 After the attack is over we can observe a list of combinations made by payload 1 (username) and payload 2 (password)
+                 Try noticing a change in the Status Codes of the combinations, or the time it took for the process to finish (Length)
+                 
+                 
