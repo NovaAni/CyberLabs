@@ -123,7 +123,7 @@ Lab: Username enumeration via different responses
                  After the attack is over we can observe a list of combinations made by payload 1 (username) and payload 2 (password)
                  Try noticing a change in the Status Codes of the combinations, or the time it took for the process to finish (Length)
                  In Screenshot1 file as uplaoded we can see that the only different status code that is present is 302 and the one with an unusual length of 189 compared to the other results
-                 ![Intruder Result](Screenshot1.png)
+                 [Intruder Result Screenshot](Screenshot1.png)
                  We off BPS and enter the username and password mentioned (arizona and daniel respectively) and we get their account page
 4. Observation: We see that by brute forcing we gain access to the user's account page by using two separate payloads for their username and password and by using BPS
 
