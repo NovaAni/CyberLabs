@@ -1,8 +1,10 @@
+BurpSuite (abbreviated to BPS)
+
 Lab: Path Traversal
 
 1. Objective:  This lab contains a path traversal vulnerability in the display of product images.
             To solve the lab, retrieve the contents of the /etc/passwd file. 
-2. Reconnaissance: We use BurpSuite to moderate the traffic generated from opening the lab link either using the built-in chromium browser or via the foxy proxy extension 
+2. Reconnaissance: We use BPS to moderate the traffic generated from opening the lab link either using the built-in chromium browser or via the foxy proxy extension 
                    We observe that we obtain a list of .jpg requests coming from the website 
 3. Exploitation: We then choose one of the .jpg files and sent the to the Repeater via. Proxy tab. 
                  After we have sent it to the Repeater tab we change the filename to: ../../../etc/passwd
@@ -47,7 +49,7 @@ Lab: User role controlled by request parameter
 1. Objective:  This lab has an admin panel at /admin, which identifies administrators using a forgeable cookie.
                Solve the lab by accessing the admin panel and using it to delete the user carlos.
                You can log in to your own account using the following credentials: wiener:peter
-2. Recon: BurpSuite should be used here as we can see that the lab requires us to login to our account. 
+2. Recon: BPS should be used here as we can see that the lab requires us to login to our account. 
           (This usually implies that we should manipulate our enterred data to gain admin controls to delete carlos.)
 3. Exploitation: First we turn on the interpreter via Proxy tab 
                  We go to "My Account" to login to our account
@@ -70,11 +72,11 @@ Lab: User ID controlled by request parameter, with unpredictable user IDs
 1. Objective:  This lab has a horizontal privilege escalation vulnerability on the user account page, but identifies users with GUIDs.
                To solve the lab, find the GUID for carlos, then submit his API key as the solution.
                You can log in to your own account using the following credentials: wiener:peter 
-2. Recon: We use BurpSuite to change our user id with carlos' and retrieve his API key
+2. Recon: We use BPS to change our user id with carlos' and retrieve his API key
 3. Exploitation: We find a blog written by carlos and open it
                  We can see carlos' user id at the top of the URL saying "userId=...." 
                  We copy carlos' user id 
-                 We turn on BurpSuite and login to our account 
+                 We turn on BPS and login to our account 
                  We observe on the second request that our user id gets mentioned but here we delete that and paste carlos' user id 
                  Then forward the request
                  We get carlos' API key which we submit to complete the level (Submit button is displayed at the top)
@@ -89,16 +91,16 @@ Lab: User ID controlled by request parameter with password disclosure
 1. Objective:  This lab has user account page that contains the current user's existing password, prefilled in a masked input.
                To solve the lab, retrieve the administrator's password, then use it to delete the user carlos.
                You can log in to your own account using the following credentials: wiener:peter 
-2. Recon: BurpSuite 
+2. Recon: BPS 
 3. Exploitation: We login to our account as provided 
                  We see that in the change-password section in the URL we observe our username i.e. wiener being displayed there
                  Change that to "administrator"
-                 Turn on BurpSuite and enter a placeholder email (dumb email) 
+                 Turn on BPS and enter a placeholder email (dumb email) 
                  And upload the new password as it is 
-                 In BurpSuite we type "password" in the search column and retrieve the password for administrator
-                 We can turn off BurpSuite now
+                 In BPS we type "password" in the search column and retrieve the password for administrator
+                 We can turn off BPS now
                  We login using administrator account and head to Admin panel to delete carlos 
-4. Observation: We deleted carlos' data using administrator access via URL and BurpSuite to attain the administrator's password after we manually update it such that only we have it
+4. Observation: We deleted carlos' data using administrator access via URL and BPS to attain the administrator's password after we manually update it such that only we have it
 
 
 
@@ -110,15 +112,23 @@ Lab: Username enumeration via different responses
                             ->Candidate usernames
                             ->Candidate passwords
                To solve the lab, enumerate a valid username, brute-force this user's password, then access their account page.
-2. Recon: BurpSuite (Intruder Tab) 
+2. Recon: BPS (Intruder Tab) 
 3. Exploitation: Save the given candidate usernames and passwords in two separate files (e.g usernames.txt and passwords.txt respectively) 
-                 On BurpSuite Intercepter and enter a random username and password 
+                 On BPS Intercepter and enter a random username and password 
                  Go to the POST request and send that to the Intruder tab 
                  Change from Sniper Attack to Cluster Bomb Attack 
                  Double click on the username you had entered and click "Add §" at the top, on the right side load your usernames.txt payload
                  Do the same steps for the password but with the passwords.txt payload 
-                 Start the attack (Using BurpSuitePro would be reccomended as it finishes the process much quicker) 
+                 Start the attack (Using BPS Pro would be reccomended as it finishes the process much quicker) 
                  After the attack is over we can observe a list of combinations made by payload 1 (username) and payload 2 (password)
                  Try noticing a change in the Status Codes of the combinations, or the time it took for the process to finish (Length)
-                 
+                 In Screenshot1 file as uplaoded we can see that the only different status code that is present is 302 and the one with an unusual length of 189 compared to the other results
+                 We off BPS and enter the username and password mentioned (arizona and daniel respectively) and we get their account page
+4. Observation: We see that by brute forcing we gain access to the user's account page by using two separate payloads for their username and password and by using BPS
+
+
+
+
+
+Lab: 
                  
