@@ -130,5 +130,12 @@ Lab: Username enumeration via different responses
 
 
 
-Lab: 
+Lab: 2FA simple bypass
+
+1. Objective:  This lab's two-factor authentication can be bypassed. You have already obtained a valid username and password, but do not have access to the user's 2FA verification code. To solve the lab, access Carlos's account page.
+
+               Your credentials: wiener:peter
+               Victim's credentials carlos:montoya
+2. Recon: BPS (Proxy Tab is good enough for this) 
+3. Exploitation: First enter the login details for the username and password as wiener:peter
                  
