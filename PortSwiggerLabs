@@ -138,4 +138,9 @@ Lab: 2FA simple bypass
                Victim's credentials carlos:montoya
 2. Recon: BPS (Proxy Tab is good enough for this) 
 3. Exploitation: First enter the login details for the username and password as wiener:peter
+                 After that step, we have to go to "Email client" to recieve the 4 digit security code which we enter in 
+                 After all that we are able to log in 
+                 We log out of the wiener account and log into carlos' account i.e carlos:montoya
+                 Using BPS we can change /login2 request of the GET request as /my-account in the Proxy tab which bypasses the F2A completely 
+4. Observation: We see that by using a basic bypass path we are able to ignore the F2A of carlos' account which enabled to gain unauthoarised access 
                  
